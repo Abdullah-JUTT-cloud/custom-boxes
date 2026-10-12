@@ -1,0 +1,84 @@
+import img21 from "../assets/21.png";
+import img22 from "../assets/22.png";
+import img23 from "../assets/23.png";
+import img24 from "../assets/24.png";
+import img25 from "../assets/25.png";
+import img26 from "../assets/26.png";
+import img27 from "../assets/27.png";
+import img28 from "../assets/28.png";
+
+const boxTypes = [
+  { title: "Custom Product Boxes", img: img21 },
+  { title: "Custom Gift Boxes", img: img22 },
+  { title: "Custom Mailer Boxes", img: img23 },
+  { title: "Custom Kraft Boxes", img: img24 },
+  { title: "Custom Display Boxes", img: img25 },
+  { title: "Custom Square Boxes", img: img26 },
+  { title: "Custom Cosmetic Boxes", img: img27 },
+  { title: "Custom Apparel Boxes", img: img28 },
+];
+
+function ArrowRight() {
+  return (
+    <svg width="8" height="7" viewBox="0 0 8 7" fill="none">
+      <path
+        d="M0.5 3.5h7M4.5 0.5l3 3-3 3"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export default function BoxTypes() {
+  return (
+    <section className="px-4 pb-[78px]">
+      <div className="mx-auto max-w-[1560px]">
+        {/* header row */}
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <h2 className="max-w-[785px] text-[28px] font-medium leading-[1.25] text-black md:text-[40px] md:leading-[50px]">
+              Find The Perfect-Fit Custom Box Type For Your Brand
+            </h2>
+            <p className="mt-4 max-w-[742px] text-base capitalize leading-[22px] text-[#111]">
+              Print247 provides a broad range of product box types where you can
+              easily find the perfect match for your product. They match your
+              brand identity as well.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            className="flex h-10 w-[177px] shrink-0 items-center justify-center rounded-full bg-black text-sm font-medium text-white lg:mb-2 lg:mr-[10px]"
+          >
+            Live Chat
+          </button>
+        </div>
+
+        {/* 4 x 2 grid */}
+        <div className="mt-7 grid grid-cols-1 gap-[10px] sm:grid-cols-2 lg:grid-cols-4">
+          {boxTypes.map(({ title, img }) => (
+            <a
+              key={title}
+              href="#quote"
+              className="relative block aspect-square overflow-hidden rounded-[10px]"
+            >
+              <img src={img} alt={title} className="h-full w-full object-cover" />
+
+              <div className="absolute bottom-[13px] left-2 min-w-[191px] rounded-[10px] bg-[rgba(217,217,217,0.4)] px-[10px] py-[9px]">
+                <p className="whitespace-nowrap text-base font-medium leading-5 text-white">
+                  {title}
+                </p>
+                <span className="mt-[5px] flex items-center gap-2 text-sm leading-[18px] text-white">
+                  Get Quote
+                  <ArrowRight />
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
