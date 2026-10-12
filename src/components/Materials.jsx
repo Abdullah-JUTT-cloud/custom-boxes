@@ -14,7 +14,7 @@ const rows = [
 export default function Materials() {
   return (
     <section className="px-[10px] pb-14 sm:px-4">
-      <h2 className="mx-auto hidden max-w-[1070px] text-center text-[28px] font-medium leading-[1.25] text-black sm:block md:text-[40px] md:leading-[50px]">
+      <h2 className="sr-only mx-auto max-w-[1070px] text-center text-[28px] font-medium leading-[1.25] text-black sm:not-sr-only sm:block md:text-[40px] md:leading-[50px]">
         Pick the Most Suitable Packaging Material
       </h2>
       <p className="mx-auto mt-5 hidden max-w-[943px] text-center text-base capitalize leading-5 text-[#111] sm:block">
@@ -41,15 +41,13 @@ export default function Materials() {
             <div
               key={material}
               role="row"
-              className="border-b border-[#e3e0dd] py-[13px] last:border-b-0"
+              className="grid grid-cols-[1.1fr_1fr] border-b border-[#e3e0dd] py-[13px] text-[10px] leading-3 capitalize last:border-b-0"
             >
-              <div className="grid grid-cols-[1.1fr_1fr] text-[10px] leading-3 capitalize">
-                <span className="pl-[1px]">{material}</span>
-                <span>{bestFor}</span>
-              </div>
-              <p className="mt-[7px] text-[10px] leading-3">
+              <span role="cell" className="pl-[1px]">{material}</span>
+              <span role="cell">{bestFor}</span>
+              <span role="cell" className="col-span-2 mt-[7px] normal-case">
                 <span className="capitalize">Typical Thickness:</span> {thickness}
-              </p>
+              </span>
             </div>
           ))}
         </div>

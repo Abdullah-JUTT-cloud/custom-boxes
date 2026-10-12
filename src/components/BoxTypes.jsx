@@ -6,16 +6,24 @@ import img25 from "../assets/25.webp";
 import img26 from "../assets/26.webp";
 import img27 from "../assets/27.webp";
 import img28 from "../assets/28.webp";
+import img21Small from "../assets/21-320.webp";
+import img22Small from "../assets/22-320.webp";
+import img23Small from "../assets/23-320.webp";
+import img24Small from "../assets/24-320.webp";
+import img25Small from "../assets/25-320.webp";
+import img26Small from "../assets/26-320.webp";
+import img27Small from "../assets/27-320.webp";
+import img28Small from "../assets/28-320.webp";
 
 const boxTypes = [
-  { title: "Custom Product Boxes", img: img21 },
-  { title: "Custom Gift Boxes", img: img22 },
-  { title: "Custom Mailer Boxes", img: img23 },
-  { title: "Custom Kraft Boxes", img: img24 },
-  { title: "Custom Display Boxes", img: img25 },
-  { title: "Custom Square Boxes", img: img26 },
-  { title: "Custom Cosmetic Boxes", img: img27 },
-  { title: "Custom Apparel Boxes", img: img28 },
+  { title: "Custom Product Boxes", img: img21, small: img21Small },
+  { title: "Custom Gift Boxes", img: img22, small: img22Small },
+  { title: "Custom Mailer Boxes", img: img23, small: img23Small },
+  { title: "Custom Kraft Boxes", img: img24, small: img24Small },
+  { title: "Custom Display Boxes", img: img25, small: img25Small },
+  { title: "Custom Square Boxes", img: img26, small: img26Small },
+  { title: "Custom Cosmetic Boxes", img: img27, small: img27Small },
+  { title: "Custom Apparel Boxes", img: img28, small: img28Small },
 ];
 
 function ArrowRight() {
@@ -58,7 +66,7 @@ export default function BoxTypes() {
 
         {/* 4 x 2 grid */}
         <div className="mt-7 grid grid-cols-1 gap-[10px] sm:grid-cols-2 lg:grid-cols-4">
-          {boxTypes.map(({ title, img }) => (
+          {boxTypes.map(({ title, img, small }) => (
             <a
               key={title}
               href="#quote"
@@ -66,13 +74,17 @@ export default function BoxTypes() {
             >
               <img
                 src={img}
+                srcSet={`${small} 320w, ${img} 382w`}
+                sizes="(min-width: 1024px) 23.5vw, (min-width: 640px) 47vw, calc(100vw - 32px)"
                 alt={title}
+                width="382"
+                height="382"
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover"
               />
 
-              <div className="absolute bottom-[13px] left-2 min-w-[191px] rounded-[10px] bg-[rgba(217,217,217,0.4)] px-[10px] py-[9px]">
+              <div className="absolute bottom-[13px] left-2 min-w-[191px] rounded-[10px] bg-black/70 px-[10px] py-[9px]">
                 <p className="whitespace-nowrap text-base font-medium leading-5 text-white">
                   {title}
                 </p>

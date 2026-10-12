@@ -19,12 +19,12 @@ const socials = [
 ];
 
 const badges = [
-  { name: "Minority Business Enterprise", src: mbeSeal, cls: "h-[30px] w-[30px] md:h-[42px] md:w-[42px]" },
-  { name: "Flexible Packaging Association", src: fpaBadge, cls: "h-[23px] md:h-[32px]" },
-  { name: "PIA, Services for Graphic Solutions", src: piaBadge, cls: "h-[18px] md:h-[24px]" },
-  { name: "Central Fort Bend Chamber of Commerce", src: cfbBadge, cls: "h-[22px] w-[48px] md:h-[29px] md:w-[60px]" },
-  { name: "Specialty Food Association", src: sfaBadge, cls: "col-start-2 h-[28px] w-[28px] md:h-[43px] md:w-[43px]" },
-  { name: "National Candle Association", src: ncaBadge, cls: "col-start-3 h-[26px] md:h-[16px]" },
+  { name: "Minority Business Enterprise", src: mbeSeal, width: 44, height: 44, cls: "h-[30px] w-[30px] md:h-[42px] md:w-[42px]" },
+  { name: "Flexible Packaging Association", src: fpaBadge, width: 125, height: 50, cls: "h-[23px] md:h-[32px]" },
+  { name: "PIA, Services for Graphic Solutions", src: piaBadge, width: 140, height: 46, cls: "h-[18px] md:h-[24px]" },
+  { name: "Central Fort Bend Chamber of Commerce", src: cfbBadge, width: 62, height: 31, cls: "h-[22px] w-[48px] md:h-[29px] md:w-[60px]" },
+  { name: "Specialty Food Association", src: sfaBadge, width: 64, height: 64, cls: "col-start-2 h-[28px] w-[28px] md:h-[43px] md:w-[43px]" },
+  { name: "National Candle Association", src: ncaBadge, width: 78, height: 23, cls: "col-start-3 h-[26px] md:h-[16px]" },
 ];
 
 const contacts = [
@@ -64,6 +64,8 @@ export default function Footer() {
           <img
             src={logoWhite}
             alt="Print247"
+            width="184"
+            height="45"
             loading="lazy"
             decoding="async"
             className="h-[30px] w-auto object-contain md:h-[40px]"
@@ -115,11 +117,13 @@ export default function Footer() {
           <span className="hidden md:inline">Certified By</span>
         </p>
         <div className="mt-4 grid grid-cols-4 items-center justify-items-center gap-x-2 gap-y-[10px] md:mt-5 md:flex md:flex-wrap md:justify-center md:gap-x-[36px] md:gap-y-4">
-          {badges.map(({ name, src, cls }) => (
+          {badges.map(({ name, src, width, height, cls }) => (
             <img
               key={name}
               src={src}
               alt={name}
+              width={width}
+              height={height}
               loading="lazy"
               decoding="async"
               className={`${cls} w-auto object-contain`}
@@ -142,6 +146,8 @@ export default function Footer() {
             <img
               src={paymentIcons}
               alt="Wire Transfer, Zelle, Discover, Visa, PayPal, Mastercard and American Express"
+              width="137"
+              height="13"
               loading="lazy"
               decoding="async"
               className="h-[13px] w-[137px] object-contain md:w-[92px]"

@@ -1,16 +1,29 @@
 import { useEffect, useState } from "react";
 import QuoteForm from "./QuoteForm";
-import img1 from "../assets/1.webp";
 import img2 from "../assets/2.webp";
 import img3 from "../assets/3.webp";
 import img4 from "../assets/4.webp";
+import img2Small from "../assets/2-428.webp";
+import img2Medium from "../assets/2-640.webp";
+import img3Small from "../assets/3-428.webp";
+import img3Medium from "../assets/3-640.webp";
+import img4Small from "../assets/4-428.webp";
+import img4Medium from "../assets/4-640.webp";
 import thumb1 from "../assets/1-thumb.webp";
 import thumb2 from "../assets/2-thumb.webp";
 import thumb3 from "../assets/3-thumb.webp";
 import thumb4 from "../assets/4-thumb.webp";
 import examIcon from "../assets/exam.png";
 
-const slides = [img1, img2, img3, img4];
+const slides = [
+  {
+    src: "/hero-lcp.webp",
+    srcSet: "/hero-lcp-428.webp 428w, /hero-lcp-640.webp 640w, /hero-lcp.webp 886w",
+  },
+  { src: img2, srcSet: `${img2Small} 428w, ${img2Medium} 640w, ${img2} 886w` },
+  { src: img3, srcSet: `${img3Small} 428w, ${img3Medium} 640w, ${img3} 886w` },
+  { src: img4, srcSet: `${img4Small} 428w, ${img4Medium} 640w, ${img4} 886w` },
+];
 const thumbnails = [thumb1, thumb2, thumb3, thumb4];
 const slideDescriptions = [
   "Custom orange KOL chocolate boxes with retail packaging artwork",
@@ -74,12 +87,16 @@ export default function Hero() {
 
         {/* right: image slider */}
         <div className="relative min-h-[320px] flex-1">
-          {slides.map((src, i) => (
+          {slides.map((slide, i) => (
             loadedSlides.has(i) && (
               <img
                 key={i}
-                src={src}
+                src={slide.src}
+                srcSet={slide.srcSet}
+                sizes="(max-width: 1023px) calc(100vw - 32px), (min-width: 1885px) 886px, 47vw"
                 alt={slideDescriptions[i]}
+                width="886"
+                height="662"
                 aria-hidden={i !== active}
                 loading={i === 0 ? "eager" : "lazy"}
                 fetchPriority={i === 0 ? "high" : "auto"}
@@ -117,6 +134,8 @@ export default function Hero() {
                 <img
                   src={thumbnails[i]}
                   alt=""
+                  width="200"
+                  height="149"
                   loading="lazy"
                   decoding="async"
                   className="h-full w-full object-cover"

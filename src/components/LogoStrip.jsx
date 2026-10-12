@@ -40,6 +40,8 @@ export default function LogoStrip() {
             key={i}
             src={src}
             alt={alt}
+            width={w}
+            height={h}
             style={{ width: w, height: h }}
             loading="lazy"
             decoding="async"

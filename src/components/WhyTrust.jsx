@@ -59,6 +59,8 @@ export default function WhyTrust() {
             <img
               src={mainImg}
               alt="Custom printed box held in two hands"
+              width="617"
+              height="503"
               loading="lazy"
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover"

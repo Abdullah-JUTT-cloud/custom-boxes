@@ -1,4 +1,4 @@
-import logo from "../assets/logoB.png";
+import logo from "../assets/logoB.webp";
 
 export default function Navbar() {
   return (

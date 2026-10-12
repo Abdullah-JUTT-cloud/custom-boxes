@@ -47,6 +47,8 @@ function PlusIcon({ open }) {
       height="17"
       viewBox="0 0 17 17"
       fill="none"
+      aria-hidden="true"
+      focusable="false"
       className={`shrink-0 transition-transform duration-200 ${
         open ? "rotate-45" : ""
       }`}

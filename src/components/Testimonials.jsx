@@ -107,7 +107,7 @@ export default function Testimonials() {
           </div>
 
           <div className="flex h-12 w-[297px] max-w-full items-center justify-center gap-6 rounded-full border border-[#87909e] px-7">
-            <span className="flex items-center gap-1.5 text-sm font-semibold text-[#159b59]">
+            <span className="flex items-center gap-1.5 text-sm font-semibold text-[#0b7a4b]">
               <StarSvg className="h-[15px] w-4 text-[#00b67a]" />
               Trustpilot
             </span>
