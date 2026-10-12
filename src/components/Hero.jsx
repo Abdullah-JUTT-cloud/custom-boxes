@@ -1,19 +1,37 @@
 import { useEffect, useState } from "react";
 import QuoteForm from "./QuoteForm";
-import img1 from "../assets/1.png";
-import img2 from "../assets/2.png";
-import img3 from "../assets/3.png";
-import img4 from "../assets/4.png";
+import img1 from "../assets/1.webp";
+import img2 from "../assets/2.webp";
+import img3 from "../assets/3.webp";
+import img4 from "../assets/4.webp";
+import thumb1 from "../assets/1-thumb.webp";
+import thumb2 from "../assets/2-thumb.webp";
+import thumb3 from "../assets/3-thumb.webp";
+import thumb4 from "../assets/4-thumb.webp";
 import examIcon from "../assets/exam.png";
 
 const slides = [img1, img2, img3, img4];
+const thumbnails = [thumb1, thumb2, thumb3, thumb4];
+const slideDescriptions = [
+  "Custom orange KOL chocolate boxes with retail packaging artwork",
+  "Custom pink and white Heather pastry box held by hand",
+  "Custom Otriea skincare cartons for serum and oil products",
+  "Custom Momaka snack bar boxes in assorted flavors",
+];
 
 export default function Hero() {
   const [active, setActive] = useState(0);
+  const [loadedSlides, setLoadedSlides] = useState(() => new Set([0]));
 
   // auto-advance every 5s; clicking a thumbnail restarts the timer
   useEffect(() => {
-    const id = setTimeout(() => setActive((i) => (i + 1) % slides.length), 5000);
+    const id = setTimeout(() => {
+      const next = (active + 1) % slides.length;
+      setLoadedSlides((current) =>
+        current.has(next) ? current : new Set(current).add(next),
+      );
+      setActive(next);
+    }, 5000);
     return () => clearTimeout(id);
   }, [active]);
 
@@ -57,14 +75,20 @@ export default function Hero() {
         {/* right: image slider */}
         <div className="relative min-h-[320px] flex-1">
           {slides.map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt={`Custom box showcase ${i + 1}`}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-                i === active ? "opacity-100" : "opacity-0"
-              }`}
-            />
+            loadedSlides.has(i) && (
+              <img
+                key={i}
+                src={src}
+                alt={slideDescriptions[i]}
+                aria-hidden={i !== active}
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "auto"}
+                decoding="async"
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                  i === active ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            )
           ))}
 
           {/* progress bar */}
@@ -81,11 +105,22 @@ export default function Hero() {
               <button
                 key={i}
                 type="button"
-                onClick={() => setActive(i)}
+                onClick={() => {
+                  setLoadedSlides((current) =>
+                    current.has(i) ? current : new Set(current).add(i),
+                  );
+                  setActive(i);
+                }}
                 aria-label={`Show image ${i + 1}`}
                 className="h-[66px] w-[66px] overflow-hidden rounded-[10px]"
               >
-                <img src={slides[i]} alt="" className="h-full w-full object-cover" />
+                <img
+                  src={thumbnails[i]}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
               </button>
             ))}
           </div>

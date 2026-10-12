@@ -64,6 +64,8 @@ export default function Footer() {
           <img
             src={logoWhite}
             alt="Print247"
+            loading="lazy"
+            decoding="async"
             className="h-[30px] w-auto object-contain md:h-[40px]"
           />
         </a>
@@ -96,7 +98,13 @@ export default function Footer() {
               aria-label={label}
               className="flex h-[26px] w-[26px] items-center justify-center rounded-full border border-white/60 md:h-[32px] md:w-[32px]"
             >
-              <img src={icon} alt="" className="h-[12px] w-[12px] md:h-[13px] md:w-[13px]" />
+              <img
+                src={icon}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="h-[12px] w-[12px] md:h-[13px] md:w-[13px]"
+              />
             </a>
           ))}
         </div>
@@ -112,6 +120,8 @@ export default function Footer() {
               key={name}
               src={src}
               alt={name}
+              loading="lazy"
+              decoding="async"
               className={`${cls} w-auto object-contain`}
             />
           ))}
@@ -132,6 +142,8 @@ export default function Footer() {
             <img
               src={paymentIcons}
               alt="Wire Transfer, Zelle, Discover, Visa, PayPal, Mastercard and American Express"
+              loading="lazy"
+              decoding="async"
               className="h-[13px] w-[137px] object-contain md:w-[92px]"
             />
           </div>

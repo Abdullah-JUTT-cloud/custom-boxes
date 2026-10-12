@@ -1,4 +1,4 @@
-import mainImg from "../assets/main.png";
+import mainImg from "../assets/main.webp";
 
 const features = [
   {
@@ -59,6 +59,8 @@ export default function WhyTrust() {
             <img
               src={mainImg}
               alt="Custom printed box held in two hands"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 h-full w-full object-cover"
             />
           </div>

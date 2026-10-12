@@ -1,11 +1,11 @@
-import img21 from "../assets/21.png";
-import img22 from "../assets/22.png";
-import img23 from "../assets/23.png";
-import img24 from "../assets/24.png";
-import img25 from "../assets/25.png";
-import img26 from "../assets/26.png";
-import img27 from "../assets/27.png";
-import img28 from "../assets/28.png";
+import img21 from "../assets/21.webp";
+import img22 from "../assets/22.webp";
+import img23 from "../assets/23.webp";
+import img24 from "../assets/24.webp";
+import img25 from "../assets/25.webp";
+import img26 from "../assets/26.webp";
+import img27 from "../assets/27.webp";
+import img28 from "../assets/28.webp";
 
 const boxTypes = [
   { title: "Custom Product Boxes", img: img21 },
@@ -64,7 +64,13 @@ export default function BoxTypes() {
               href="#quote"
               className="relative block aspect-square overflow-hidden rounded-[10px]"
             >
-              <img src={img} alt={title} className="h-full w-full object-cover" />
+              <img
+                src={img}
+                alt={title}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
 
               <div className="absolute bottom-[13px] left-2 min-w-[191px] rounded-[10px] bg-[rgba(217,217,217,0.4)] px-[10px] py-[9px]">
                 <p className="whitespace-nowrap text-base font-medium leading-5 text-white">

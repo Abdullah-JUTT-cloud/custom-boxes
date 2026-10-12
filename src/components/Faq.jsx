@@ -27,6 +27,19 @@ const faqs = [
   },
 ];
 
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: a,
+    },
+  })),
+};
+
 function PlusIcon({ open }) {
   return (
     <svg
@@ -53,6 +66,10 @@ export default function Faq() {
 
   return (
     <section className="px-4 pb-24 pt-[10px] md:px-[29px]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <div className="mx-auto max-w-[1600px]">
         <h2 className="text-[28px] font-normal leading-[1.25] text-black md:text-[40px] md:leading-[50px]">
           Frequently Asked Questions

@@ -41,6 +41,8 @@ export default function LogoStrip() {
             src={src}
             alt={alt}
             style={{ width: w, height: h }}
+            loading="lazy"
+            decoding="async"
             className="shrink-0"
           />
         ))}
